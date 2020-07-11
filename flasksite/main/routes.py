@@ -10,17 +10,17 @@ main = Blueprint('main', __name__)
 
 @main.route("/")
 def home():
-    with open("flasksite/templates/markdown/about.md", "r") as f:
+    with open("flasksite/templates/markdown/about.md", "r", encoding="utf8") as f:
         about=f.read()
-    with open("flasksite/templates/markdown/contact.md", "r") as f:
+    with open("flasksite/templates/markdown/contact.md", "r", encoding="utf8") as f:
         contact=f.read()
-    with open("flasksite/templates/markdown/opentimes.md", "r") as f:
+    with open("flasksite/templates/markdown/opentimes.md", "r", encoding="utf8") as f:
         opentimes=f.read()
-    with open("flasksite/templates/markdown/phoneno.md", "r") as f:
+    with open("flasksite/templates/markdown/phoneno.md", "r", encoding="utf8") as f:
         phoneno=f.read()
-    with open("flasksite/templates/markdown/address.md", "r") as f:
+    with open("flasksite/templates/markdown/address.md", "r", encoding="utf8") as f:
         address=f.read()
-    with open("flasksite/templates/markdown/email.md", "r") as f:
+    with open("flasksite/templates/markdown/email.md", "r", encoding="utf8") as f:
         email=f.read()
     posts = Post.query.order_by(Post.date.desc()).limit(2)
     return render_template('home.html', about=about, opentimes=opentimes, contact=contact, phoneno=phoneno, address=address, email=email, posts=posts)
@@ -37,17 +37,17 @@ def edit_text(mkdwn):
     form = ContentForm()
     if form.validate_on_submit():
         if mkdwn == 'address.md':
-            content = form.content.data.replace("\n", "")
+            content = form.content.data.replace("\r", "")
         else:
-            content = form.content.data.replace("\n\n","\n")
-        with open(f"flasksite/templates/markdown/{mkdwn}", "w") as f:
+            content = form.content.data.replace("\n\n\n", "\n")
+        with open(f"flasksite/templates/markdown/{mkdwn}", "w", encoding="utf8") as f:
             f.write(content)
         flash('Content updated!', 'success')
         return redirect(url_for('main.home'))
     elif request.method == 'GET':
-        with open(f"flasksite/templates/markdown/{mkdwn}", "r") as f:
+        with open(f"flasksite/templates/markdown/{mkdwn}", "r", encoding="utf8") as f:
             content = f.read()
-        form.content.data = content.replace("\n\n","\n")
+        form.content.data = content.replace("\n\n\n", "\n")
     return render_template('edit_text.html', content=content, form=form)
 
 
@@ -82,12 +82,12 @@ def edit_opentimes():
 | **Sunday**    	| {cell_60}                      	| {cell_61}         |
 """
 
-        with open("flasksite/templates/markdown/opentimes.md", "w") as f:
+        with open("flasksite/templates/markdown/opentimes.md", "w", encoding="utf8") as f:
             f.write(content)
         flash('Content updated!', 'success')
         return redirect(url_for('main.home'))
     elif request.method == 'GET':
-        with open("flasksite/templates/markdown/opentimes.md", "r") as f:
+        with open("flasksite/templates/markdown/opentimes.md", "r", encoding="utf8") as f:
             content = f.read()
             tbl = content.split('|')
             form.cell_00.data = tbl[10].strip().replace('<br>', '\n')
