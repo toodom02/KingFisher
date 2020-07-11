@@ -539,8 +539,19 @@
 
                         {% if post.media_file %}
 
-                        <img style='max-height:50vh; object-fit: contain' src={{ url_for('static',
-                        filename='post_media/' + post.media_file) }}>
+                            {% if ( (".jpg" in post.media_file) or (".png" in post.media_file) ) %}
+
+                            <img style=' max-height:50vh; max-width: 100%; height: auto;' src={{ url_for('static',
+                            filename='post_media/' + post.media_file) }}>
+
+                            {% else %}
+
+                            <video style=' max-height:50vh; max-width: 100%; height: auto;' controls>
+                                <source src={{ url_for('static', filename='post_media/' + post.media_file) }}>
+                                Your browser does not support videos
+                            </video>
+
+                            {% endif %}
 
                         {% endif %}
 

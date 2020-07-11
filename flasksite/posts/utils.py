@@ -11,7 +11,8 @@ def save_media(form_media):
     media_fn = random_hex + f_ext
     media_path = os.path.join(current_app.root_path, 'static/post_media', media_fn)
 
-    i = Image.open(form_media)
-    i.save(media_path)
+    form_media.save(media_path)
+    #i = Image.open(form_media)
+    #i.save(media_path)
 
     return media_fn

@@ -43,9 +43,13 @@ def update_post(post_id):
     post = Post.query.get_or_404(post_id)
     form = PostForm()
     if form.validate_on_submit():
+        try:
+            os.remove(os.path.join(current_app.root_path, 'static/post_media', post.media_file))
+        except:
+            pass
+
         if form.media_file.data:
             media_file = save_media(form.media_file.data)
-            os.remove(os.path.join(current_app.root_path, 'static/post_media', post.media_file))
         else:
             media_file = None
         post.title = form.title.data
