@@ -1,0 +1,227 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="col">
+    <div class="content-section">
+        <form method="POST" action="" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Edit Opening Times</legend>
+                <div style="width: 100%; display: table;">
+
+                    <div style="display: table-row">
+                        <div style="display: table-cell;"></div>
+                        <div style="display: table-cell;"><b>For 'Guests'</b></div>
+                        <div style="display: table-cell;"><b>General Public</b></div>
+                    </div>
+
+                    <div style="display: table-row">
+                        <div style="display: table-cell;"><b>Monday</b></div>
+                        <div class="form-group" style="display: table-cell;">
+                            {% if form.cell_00.errors %}
+                            {{ form.cell_00(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.cell_00.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.cell_00(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group" style="display: table-cell;">
+                            {% if form.cell_01.errors %}
+                            {{ form.cell_01(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.cell_01.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.cell_01(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div style="display: table-row">
+                        <div style="display: table-cell;"><b>Tuesday</b></div>
+                        <div class="form-group" style="display: table-cell;">
+                            {% if form.cell_10.errors %}
+                            {{ form.cell_10(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.cell_10.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.cell_10(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group" style="display: table-cell;">
+                            {% if form.cell_11.errors %}
+                            {{ form.cell_11(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.cell_11.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.cell_11(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div style="display: table-row">
+                        <div style="display: table-cell;"><b>Wednesday</b></div>
+                        <div class="form-group" style="display: table-cell;">
+                            {% if form.cell_20.errors %}
+                            {{ form.cell_20(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.cell_20.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.cell_20(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group" style="display: table-cell;">
+                            {% if form.cell_21.errors %}
+                            {{ form.cell_21(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.cell_21.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.cell_21(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div style="display: table-row">
+                        <div style="display: table-cell;"><b>Thursday</b></div>
+                        <div class="form-group" style="display: table-cell;">
+                            {% if form.cell_30.errors %}
+                            {{ form.cell_30(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.cell_30.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.cell_30(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group" style="display: table-cell;">
+                            {% if form.cell_31.errors %}
+                            {{ form.cell_31(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.cell_31.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.cell_31(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div style="display: table-row">
+                        <div style="display: table-cell;"><b>Friday</b></div>
+                        <div class="form-group" style="display: table-cell;">
+                            {% if form.cell_40.errors %}
+                            {{ form.cell_40(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.cell_40.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.cell_40(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group" style="display: table-cell;">
+                            {% if form.cell_41.errors %}
+                            {{ form.cell_41(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.cell_41.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.cell_41(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div style="display: table-row">
+                        <div style="display: table-cell;"><b>Saturday</b></div>
+                        <div class="form-group" style="display: table-cell;">
+                            {% if form.cell_50.errors %}
+                            {{ form.cell_50(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.cell_50.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.cell_50(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group" style="display: table-cell;">
+                            {% if form.cell_51.errors %}
+                            {{ form.cell_51(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.cell_51.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.cell_51(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div style="display: table-row">
+                        <div style="display: table-cell;"><b>Sunday</b></div>
+                        <div class="form-group" style="display: table-cell;">
+                            {% if form.cell_60.errors %}
+                            {{ form.cell_60(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.cell_60.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.cell_60(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group" style="display: table-cell;">
+                            {% if form.cell_61.errors %}
+                            {{ form.cell_61(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.cell_61.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.cell_61(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

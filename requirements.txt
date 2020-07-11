@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 altgraph==0.17
 auto-py-to-exe==2.7.1
 Babel==2.8.0
@@ -13,11 +14,20 @@ click==7.1.2
 DateTime==4.3
 dnspython==1.16.0
 Eel==0.12.3
+=======
+bcrypt==3.1.7
+blinker==1.4
+certifi==2020.4.5.1
+cffi==1.14.0
+click==7.1.2
+dnspython==1.16.0
+>>>>>>> 5df6187... First commit
 email-validator==1.1.1
 Flask==1.1.2
 Flask-Bcrypt==0.7.1
 Flask-Login==0.5.0
 Flask-Mail==0.9.1
+<<<<<<< HEAD
 Flask-SQLAlchemy==2.4.3
 Flask-WTF==0.14.3
 fpdf==1.7.2
@@ -58,3 +68,20 @@ Werkzeug==1.0.1
 whichcraft==0.6.1
 WTForms==2.3.1
 zope.interface==5.1.0
+=======
+Flask-Misaka==1.0.0
+Flask-SQLAlchemy==2.4.3
+Flask-WTF==0.14.3
+idna==2.10
+itsdangerous==1.1.0
+Jinja2==2.11.2
+MarkupSafe==1.1.1
+misaka==2.1.1
+Pillow==7.2.0
+pycparser==2.20
+python-dotenv==0.14.0
+six==1.14.0
+SQLAlchemy==1.3.18
+Werkzeug==1.0.1
+WTForms==2.3.1
+>>>>>>> 5df6187... First commit

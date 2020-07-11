@@ -13,6 +13,17 @@ h1, h2, h3, h4, h5, h6 {
   color: #444444;
 }
 
+<<<<<<< HEAD
+=======
+table {
+    class: table;
+    width: 100%;
+}
+
+tr{
+    height:75px;
+}
+>>>>>>> 5df6187... First commit
 
 #about, #contact, #find, #news{
     min-height: 100vh;
@@ -143,5 +154,9 @@ a.article-title:hover {
     top:0;
     height:100%;
     width:100%;
+<<<<<<< HEAD
+=======
+    max-height:75vh;
+>>>>>>> 5df6187... First commit
     position:absolute;
 }
