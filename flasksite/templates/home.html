@@ -22,7 +22,6 @@
   </ul>
 =======
 
-
 {% block navbar %}
 
 <ul class="navbar-nav">
@@ -70,30 +69,33 @@
     </section>
 =======
     <body style="margin-top: 0rem;">
-        <div class="parallax_img">
-            <div class="container h-100">
-                {% with messages = get_flashed_messages(with_categories=true) %}
-                {% if messages %}
-                {% for category, message in messages %}
-                <div class="alert alert-{{ category }}">
-                    {{ message }}
-                </div>
-                {% endfor %}
-                {% endif %}
-                {% endwith %}
-                <div class="row h-100 align-items-center">
-                    <div class="col-12 text-center">
-                        <h2 style="color:white;">King<font color="LightBlue"><b><em>Fisher</em></b></font> Café</h2>
-                        <h4 style="color:white;">The Café That Supports the Homeless</h4>
-                        <a style="color:white;" href="{{ url_for('main.questionnaire') }}" class="alert-link">
-                            Have you benefited from the Kingfisher Café? Please complete this questionnaire</a>
-                    </div>
-
+    <div class="parallax_img">
+        <div class="container h-100">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <div class="row h-100 align-items-center">
+                <div class="col-12 text-center">
+                    <h2 style="color:white;">King<font color="LightBlue"><b><em>Fisher</em></b></font> Café</h2>
+                    <h4 style="color:white;">The Café That Supports the Homeless</h4>
+                    <h6 class="link-parent" style="color:white;">{{ sub|markdown }}</h6>
+                    {% if current_user.is_authenticated %}
+                    <a class="btn btn-secondary btn-sm mt-1 mb-1"
+                       href="{{ url_for('main.edit_text', mkdwn='sub.md') }}">🖉 Edit</a>
+                    {% endif %}
                 </div>
 
             </div>
 
         </div>
+
+    </div>
     </body>
 </section>
 >>>>>>> 5df6187... First commit
@@ -104,7 +106,7 @@
 
 <section id="about">
     <a class="anchor" id="top"></a>
-    <main role="main" class="container">
+    <main class="container" role="main">
 
 <<<<<<< HEAD
             <div>
@@ -214,7 +216,8 @@
             <h1> About us</h1>
 
             {% if current_user.is_authenticated %}
-            <a style="float:right" class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('main.edit_text', mkdwn='about.md') }}">🖉 Edit</a>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('main.edit_text', mkdwn='about.md') }}"
+               style="float:right">🖉 Edit</a>
             {% endif %}
             {{ about|markdown }}
 
@@ -222,7 +225,8 @@
         <div class="content-section table" style="overflow-x:auto;">
             <h4 class="text-center">Opening Hours</h4>
             {% if current_user.is_authenticated %}
-            <a style="float:right" class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('main.edit_opentimes') }}">🖉 Edit</a>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('main.edit_opentimes') }}"
+               style="float:right">🖉 Edit</a>
             {% endif %}
             {{ opentimes|markdown }}
         </div>
@@ -253,7 +257,7 @@
         </div>
     </div>
 
-    <main role="main" class="container">
+    <main class="container" role="main">
 
         <br>
 <<<<<<< HEAD
@@ -347,7 +351,8 @@
             <div class="col-md">
 
                 {% if current_user.is_authenticated %}
-                <a style="float:right" class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('main.edit_text', mkdwn='contact.md') }}">🖉 Edit</a>
+                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('main.edit_text', mkdwn='contact.md') }}"
+                   style="float:right">🖉 Edit</a>
                 {% endif %}
                 {{ contact|markdown }}
 
@@ -356,9 +361,11 @@
                     <div class="col-sm-12 col-md-6 col-lg-3 my-5">
                         <div class="card border">
                             <div class="card-body text-center">
-                                <a href="tel:{{ phoneno }}"><i class="fa fa-phone fa-5x mb-3" aria-hidden="true"></i></a>
+                                <a href="tel:{{ phoneno }}"><i aria-hidden="true"
+                                                               class="fa fa-phone fa-5x mb-3"></i></a>
                                 {% if current_user.is_authenticated %}
-                                <a style="float:right" class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('main.edit_text', mkdwn='phoneno.md') }}">🖉 Edit</a>
+                                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('main.edit_text', mkdwn='phoneno.md') }}"
+                                   style="float:right">🖉 Edit</a>
                                 {% endif %}
                                 <h4 class="text-uppercase ">call us</h4>
                                 {{ phoneno|markdown }}
@@ -368,9 +375,10 @@
                     <div class="col-sm-12 col-md-6 col-lg-3 my-5">
                         <div class="card border">
                             <div class="card-body text-center">
-                                <a href="#find"><i class="fa fa-map-marker fa-5x mb-3" aria-hidden="true"></i></a>
+                                <a href="#find"><i aria-hidden="true" class="fa fa-map-marker fa-5x mb-3"></i></a>
                                 {% if current_user.is_authenticated %}
-                                <a style="float:right" class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('main.edit_text', mkdwn='address.md') }}">🖉 Edit</a>
+                                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('main.edit_text', mkdwn='address.md') }}"
+                                   style="float:right">🖉 Edit</a>
                                 {% endif %}
                                 <h4 class="text-uppercase ">visit us</h4>
                                 {{ address|markdown }}
@@ -380,9 +388,11 @@
                     <div class="col-sm-12 col-md-6 col-lg-3 my-5">
                         <div class="card border">
                             <div class="card-body text-center">
-                                <a href="mailto:{{ email }}"><i class="fa fa-envelope fa-5x mb-3" aria-hidden="true"></i></a>
+                                <a href="mailto:{{ email }}"><i aria-hidden="true"
+                                                                class="fa fa-envelope fa-5x mb-3"></i></a>
                                 {% if current_user.is_authenticated %}
-                                <a style="float:right" class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('main.edit_text', mkdwn='email.md') }}">🖉 Edit</a>
+                                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('main.edit_text', mkdwn='email.md') }}"
+                                   style="float:right">🖉 Edit</a>
                                 {% endif %}
                                 <h4 class="text-uppercase ">email us</h4>
                                 {{ email|markdown }}
@@ -393,7 +403,7 @@
                         <div class="card border">
                             <div class="card-body text-center">
                                 <a href="https://www.facebook.com/KingfisherTrustCafe"><i
-                                        class="fa fa-facebook-square fa-5x mb-3" aria-hidden="true"></i></a>
+                                        aria-hidden="true" class="fa fa-facebook-square fa-5x mb-3"></i></a>
                                 <h4 class="text-uppercase ">Follow Us</h4>
                                 <p>@KingfisherTrustCafe</p>
                             </div>
@@ -415,9 +425,9 @@
                     </h2>
                     <br>
                     <div class="map-responsive">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d695.8713660978955!2d-0.19666761474171995!3d54.080429703971724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4878ad523614fd55%3A0x6661a0a797d98ad5!2sThe%20Kingfisher%20Cafe!5e0!3m2!1sen!2suk!4v1593981700253!5m2!1sen!2suk"
+                        <iframe aria-hidden="false"
                                 frameborder="0"
-                                aria-hidden="false"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d695.8713660978955!2d-0.19666761474171995!3d54.080429703971724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4878ad523614fd55%3A0x6661a0a797d98ad5!2sThe%20Kingfisher%20Cafe!5e0!3m2!1sen!2suk!4v1593981700253!5m2!1sen!2suk"
                                 tabindex="0"></iframe>
                     </div>
                 </div>
@@ -429,6 +439,7 @@
 
 <section id="news">
 
+<<<<<<< HEAD
     <main role="main" class="container">
 <<<<<<< HEAD
     <div class="row">
@@ -508,6 +519,9 @@
 
                 <div class="fb-page" data-href="https://www.facebook.com/KingfisherTrustCafe" data-tabs="timeline" data-width="" data-height="" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true">
 =======
+=======
+    <main class="container" role="main">
+>>>>>>> cbb1c72... Support for multiple media uploads
         <div class="row">
 
 
@@ -530,69 +544,90 @@
                             <div>
                                 <a class="btn btn-secondary btn-sm mt-1 mb-1"
                                    href="{{ url_for('posts.update_post', post_id=post.id) }}">Update</a>
-                                <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal"
-                                        data-target="#deleteModal">Delete
+                                <button class="btn btn-danger btn-sm m-1" data-target="#deleteModal{{post.id}}" data-toggle="modal"
+                                        type="button">Delete
                                 </button>
                             </div>
                             {% endif %}
                         </div>
-                        <h2>{{ post.title }}</h2>
-                        <p class="article-content" align="justify">{{ post.content }}</p>
+                        <h2><a class="article-title" href="{{ url_for('posts.post', post_id=post.id) }}">
+                            {{ post.title}}
+                        </a></h2>
+                        <p align="justify" class="article-content">{{ post.content }}</p>
 
                         {% if post.media_file %}
 
-                            {% if ( (".jpg" in post.media_file) or (".png" in post.media_file) ) %}
+                        {% for file in post.media_file %}
 
-                            <img style=' max-height:50vh; max-width: 100%; height: auto;' src={{ url_for('static',
-                            filename='post_media/' + post.media_file) }}>
+                        {% if ( (".jpg" in file) or (".png" in file) or (".gif" in file)) %}
+                        <img . class="modalImage" id="{{ file.rsplit( ".", 1 )[ 0 ] }}" data-toggle="modal"
+                        data-target="#modal{{ file.rsplit( ".", 1 )[ 0 ] }}"
+                        style="max-height:150px"
+                        src={{ url_for('static',filename='post_media/' + file) }}>
 
-                            {% else %}
 
-                            <video style=' max-height:50vh; max-width: 100%; height: auto;' controls>
-                                <source src={{ url_for('static', filename='post_media/' + post.media_file) }}>
-                                Your browser does not support videos
-                            </video>
+                        {% else %}
 
-                            {% endif %}
+                        <video controls style=' max-height:50vh; max-width: 100%; height:auto;'>
+                            <source src={{ url_for('static', filename='post_media/' + file) }}>
+                            Your browser does not support video playback
+                        </video>
 
                         {% endif %}
 
-                    </div>
-                </article>
-
-
-                <!-- Modal -->
-                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="deleteModalLabel">Delete Post?</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <form action="{{ url_for('posts.delete_post', post_id=post.id) }}" method="POST">
-                                    <input class="btn btn-danger" type="submit" value="Delete">
-                                </form>
+                        <!-- Image Modal -->
+                        <div . class="modal fade" id="modal{{ file.rsplit( ".", 1 )[ 0 ] }}"
+                        tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" style="height:auto;width:auto;">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div align="center" class="modal-body">
+                                    <img class="img-fluid" src={{ url_for('static',filename='post_media/' + file) }}>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+                    {% endfor %}
+                    <br>
+
+                    {% endif %}
+
+            </div>
+            </article>
+
+            <!-- Delete Modal -->
+            <div aria-hidden="true" aria-labelledby="deleteModalLabel" class="modal fade" id="deleteModal{{post.id}}"
+                 role="dialog" tabindex="-1">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="deleteModalLabel">Delete Post?</h5>
+                            <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
+                            <form action="{{ url_for('posts.delete_post', post_id=post.id) }}" method="POST">
+                                <input class="btn btn-danger" type="submit" value="Delete">
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                {% endfor %}
-
-
-                <a class="btn btn-default mb-4" href="{{ url_for('posts.all_posts') }}">View all posts</a>
-                {% else %}
-                <p>No posts yet, Check back soon!</p>
-                {% endif %}
             </div>
 
+            {% endfor %}
 
-            <div align="center" class="col-md-4" style="margin-top:10px">
 
+<<<<<<< HEAD
                 <div class="fb-page" data-href="https://www.facebook.com/KingfisherTrustCafe" data-tabs="timeline"
                      data-width="" data-height="" data-small-header="true" data-adapt-container-width="true"
                      data-hide-cover="true" data-show-facepile="true">
@@ -615,14 +650,31 @@
 
 
 =======
+=======
+            <a class="btn btn-default mb-4" href="{{ url_for('posts.all_posts') }}">View all posts</a>
+            {% else %}
+            <p>No posts yet, Check back soon!</p>
+            {% endif %}
+        </div>
+
+
+        <div align="center" class="col-md-4" style="margin-top:10px">
+
+            <div class="fb-page" data-adapt-container-width="true" data-height=""
+                 data-hide-cover="true" data-href="https://www.facebook.com/KingfisherTrustCafe" data-show-facepile="true" data-small-header="true"
+                 data-tabs="timeline" data-width="">
+                <blockquote cite="https://www.facebook.com/KingfisherTrustCafe" class="fb-xfbml-parse-ignore">
+                    <a href="https://www.facebook.com/KingfisherTrustCafe">Kingfisher Trust Cafe</a>
+                </blockquote>
+>>>>>>> cbb1c72... Support for multiple media uploads
             </div>
+
+        </div>
         </div>
     </main>
 
 
 </section>
-
-
 
 
 {% endblock bottom %}

@@ -25,6 +25,8 @@ tr{
 }
 >>>>>>> 5df6187... First commit
 
+.link-parent a { color:white; }
+
 #about, #contact, #find, #news{
     min-height: 100vh;
     margin-top: -54px;
@@ -160,3 +162,13 @@ a.article-title:hover {
 >>>>>>> 5df6187... First commit
     position:absolute;
 }
+
+/* Style the Image Used to Trigger the Modal */
+.modalImage {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  max-width: 100%;
+}
+
+.modalImage:hover {opacity: 0.7;}

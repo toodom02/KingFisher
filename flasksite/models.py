@@ -75,6 +75,7 @@ class Post(db.Model):
     title = db.Column(db.String(100), nullable=False)
     date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     content = db.Column(db.Text, nullable=False)
+<<<<<<< HEAD
     media_file = db.Column(db.String(20), default=None)
 <<<<<<< HEAD
     user_id = db.Column(db.Integer, db.ForeignKey('staff.id'), nullable=False)
@@ -82,6 +83,9 @@ class Post(db.Model):
     def __repr__(self):
         return f"Post('{self.title}', '{self.date}', '{self.media_file}')"
 =======
+=======
+    media_file = db.Column(db.PickleType, default=None)
+>>>>>>> cbb1c72... Support for multiple media uploads
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def __repr__(self):

@@ -10,6 +10,8 @@ main = Blueprint('main', __name__)
 
 @main.route("/")
 def home():
+    with open("flasksite/templates/markdown/sub.md", "r", encoding="utf8") as f:
+        sub=f.read()
     with open("flasksite/templates/markdown/about.md", "r", encoding="utf8") as f:
         about=f.read()
     with open("flasksite/templates/markdown/contact.md", "r", encoding="utf8") as f:
@@ -23,12 +25,7 @@ def home():
     with open("flasksite/templates/markdown/email.md", "r", encoding="utf8") as f:
         email=f.read()
     posts = Post.query.order_by(Post.date.desc()).limit(2)
-    return render_template('home.html', about=about, opentimes=opentimes, contact=contact, phoneno=phoneno, address=address, email=email, posts=posts)
-
-
-@main.route("/questionnaire")
-def questionnaire():
-    return render_template('questionnaire.html', title='Questionnaire')
+    return render_template('home.html', sub=sub, about=about, opentimes=opentimes, contact=contact, phoneno=phoneno, address=address, email=email, posts=posts)
 
 
 @main.route("/edit/<mkdwn>", methods=['GET', 'POST'])

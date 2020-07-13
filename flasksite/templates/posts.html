@@ -3,6 +3,7 @@
 {% block content %}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     <main role="main" class="container">
     <div class="row">
 
@@ -11,6 +12,9 @@
                             {% with messages = get_flashed_messages(with_categories=true) %}
 =======
 <main role="main" class="container">
+=======
+<main class="container" role="main">
+>>>>>>> cbb1c72... Support for multiple media uploads
     <div class="row">
 
 
@@ -117,73 +121,101 @@
                         <div>
                             <a class="btn btn-secondary btn-sm mt-1 mb-1"
                                href="{{ url_for('posts.update_post', post_id=post.id) }}">Update</a>
-                            <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal"
-                                    data-target="#deleteModal">Delete
+                            <button class="btn btn-danger btn-sm m-1" data-target="#deleteModal{{post.id}}" data-toggle="modal"
+                                    type="button">Delete
                             </button>
                         </div>
                         {% endif %}
                     </div>
-                    <h2>{{ post.title }}</h2>
-                    <p class="article-content" align="justify">{{ post.content }}</p>
+                    <h2><a class="article-title" href="{{ url_for('posts.post', post_id=post.id) }}">{{ post.title
+                        }}</a></h2>
+                    <p align="justify" class="article-content">{{ post.content }}</p>
 
                     {% if post.media_file %}
 
-                        {% if ( (".jpg" in post.media_file) or (".png" in post.media_file) ) %}
+                    {% for file in post.media_file %}
 
-                        <img style=' max-height:50vh; max-width: 100%; height: auto;' src={{ url_for('static',
-                        filename='post_media/' + post.media_file) }}>
+                    {% if ( (".jpg" in file) or (".png" in file) or (".gif" in file) ) %}
+                    <img . class="modalImage" id="{{ file.rsplit( ".", 1 )[ 0 ] }}" data-toggle="modal"
+                    data-target="#modal{{ file.rsplit( ".", 1 )[ 0 ] }}"
+                    style="max-height:150px"
+                    src={{ url_for('static',filename='post_media/' + file) }}>
 
-                        {% else %}
 
-                        <video style=' max-height:50vh; max-width: 100%; height: auto;' controls>
-                            <source src={{ url_for('static', filename='post_media/' + post.media_file) }}>
-                            Your browser does not support video playback
-                        </video>
+                    {% else %}
 
-                        {% endif %}
+                    <video controls style=' max-height:50vh; max-width: 100%; height:auto;'>
+                        <source src={{ url_for('static', filename='post_media/' + file) }}>
+                        Your browser does not support video playback
+                    </video>
 
                     {% endif %}
 
-                </div>
-            </article>
-
-
-            <!-- Modal -->
-            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
-                 aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="deleteModalLabel">Delete Post?</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <form action="{{ url_for('posts.delete_post', post_id=post.id) }}" method="POST">
-                                <input class="btn btn-danger" type="submit" value="Delete">
-                            </form>
+                    <!-- Modal -->
+                    <div . class="modal fade" id="modal{{ file.rsplit( ".", 1 )[ 0 ] }}"
+                    tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" style="height:auto;width:auto;">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div align="center" class="modal-body">
+                                <img class="img-fluid" src={{ url_for('static',filename='post_media/' + file) }}>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            {% endfor %}
 
-            {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
-            {% if page_num %}
-            {% if posts.page == page_num %}
-            <a class="btn btn-info mb-4" href="{{ url_for('posts.all_posts', page=page_num) }}">{{ page_num }}</a>
-            {% else %}
-            <a class="btn btn-outline-info mb-4" href="{{ url_for('posts.all_posts', page=page_num) }}">{{ page_num
-                }}</a>
-            {% endif %}
-            {% else %}
-            ...
-            {% endif %}
-            {% endfor %}
+                {% endfor %}
+                <br>
+
+                {% endif %}
 
         </div>
+        </article>
+
+        <!-- Delete Modal -->
+        <div aria-hidden="true" aria-labelledby="deleteModalLabel" class="modal fade" id="deleteModal{{post.id}}"
+             role="dialog" tabindex="-1">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">Delete Post?</h5>
+                        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
+                        <form action="{{ url_for('posts.delete_post', post_id=post.id) }}" method="POST">
+                            <input class="btn btn-danger" type="submit" value="Delete">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+
+        {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+        {% if page_num %}
+        {% if posts.page == page_num %}
+        <a class="btn btn-info mb-4" href="{{ url_for('posts.all_posts', page=page_num) }}">{{ page_num }}</a>
+        {% else %}
+        <a class="btn btn-outline-info mb-4" href="{{ url_for('posts.all_posts', page=page_num) }}">{{ page_num
+            }}</a>
+        {% endif %}
+        {% else %}
+        ...
+        {% endif %}
+        {% endfor %}
+
+    </div>
 
     </div>
 </main>

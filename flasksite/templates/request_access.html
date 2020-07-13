@@ -1,19 +1,20 @@
 {% extends "layout.html" %}
 
 {% block content %}
-{% with messages = get_flashed_messages(with_categories=true) %}
-{% if messages %}
-{% for category, message in messages %}
-<div class="alert alert-{{ category }}">
-    {{ message }}
-</div>
-{% endfor %}
-{% endif %}
-{% endwith %}
+
 
 <div class="col-md-8">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="alert alert-{{ category }}">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
     <div class="contect-section">
-        <form method="POST" action="">
+        <form action="" method="POST">
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Request Access</legend>
@@ -88,8 +89,14 @@
 
 
     <div class="border-top pt-3">
-        <small class="" text-muted">
-        Already Have An Account? <a class="ml-2" href="{{ url_for('users.login') }}">Sign In</a>
+        <small class="text-muted">
+            Already Have An Account? <a class="ml-2" href="{{ url_for('users.login') }}">Sign In</a>
+        </small>
+        <br>
+        <br>
+        <small class="text-muted">
+            If no admin account exists, follow this <a class="ml-2"
+                                                       href="{{ url_for('users.register_admin') }}">Link</a>
         </small>
     </div>
 

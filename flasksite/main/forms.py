@@ -4,7 +4,7 @@ from wtforms.validators import DataRequired
 
 
 class ContentForm(FlaskForm):
-    content = TextAreaField('Content', validators=[DataRequired()])
+    content = TextAreaField('Content')
     submit = SubmitField('Update')
 
 

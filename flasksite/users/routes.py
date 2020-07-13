@@ -7,7 +7,7 @@ from flasksite import db, bcrypt
 from flasksite.models import User
 from flasksite.users.forms import RegistrationForm, LoginForm, UpdateAccountForm, RequestResetForm, ResetPasswordForm, \
     RequestAccessForm
-from flasksite.users.utils import save_picture, send_reset_email, send_request_email
+from flasksite.users.utils import save_picture, send_reset_email, send_request_email, send_register_email, verify_register_token
 
 users = Blueprint('users', __name__)
 
@@ -127,3 +127,30 @@ def reset_token(token):
         flash('Password has been reset!', 'success')
         return redirect(url_for('users.login'))
     return render_template('reset_token.html', title='Reset Password', form=form)
+
+
+@users.route("/register/<token>", methods=['GET', 'POST'])
+def register_token(token):
+    if current_user.is_authenticated:
+        return redirect(url_for('main.home'))
+    user = verify_register_token(token)
+    if not user:
+        flash('That is an invalid or expired token', 'warning')
+        return redirect(url_for('users.request_access'))
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        user = User(surname=form.surname.data, forename=form.forename.data, username=form.username.data,
+                    email=form.email.data, password=hashed_password)
+        db.session.add(user)
+        db.session.commit()
+        flash('Your account has been created! You are now able to log in', 'success')
+        return redirect(url_for('users.login'))
+    return render_template('register.html', title='Register', form=form)
+
+
+@users.route("/register/admin", methods=['GET', 'POST'])
+def register_admin():
+    send_register_email()
+    flash('An email has been sent', 'success')
+    return redirect(url_for('users.login'))
