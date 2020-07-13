@@ -1,9 +1,8 @@
 from flask import render_template, Blueprint, url_for, flash, redirect, request
 from flask_login import login_required
+
 from flasksite.main.forms import ContentForm, OpenTimesForm
-
 from flasksite.models import Post
-
 
 main = Blueprint('main', __name__)
 
@@ -11,21 +10,22 @@ main = Blueprint('main', __name__)
 @main.route("/")
 def home():
     with open("flasksite/templates/markdown/sub.md", "r", encoding="utf8") as f:
-        sub=f.read()
+        sub = f.read()
     with open("flasksite/templates/markdown/about.md", "r", encoding="utf8") as f:
-        about=f.read()
+        about = f.read()
     with open("flasksite/templates/markdown/contact.md", "r", encoding="utf8") as f:
-        contact=f.read()
+        contact = f.read()
     with open("flasksite/templates/markdown/opentimes.md", "r", encoding="utf8") as f:
-        opentimes=f.read()
+        opentimes = f.read()
     with open("flasksite/templates/markdown/phoneno.md", "r", encoding="utf8") as f:
-        phoneno=f.read()
+        phoneno = f.read()
     with open("flasksite/templates/markdown/address.md", "r", encoding="utf8") as f:
-        address=f.read()
+        address = f.read()
     with open("flasksite/templates/markdown/email.md", "r", encoding="utf8") as f:
-        email=f.read()
+        email = f.read()
     posts = Post.query.order_by(Post.date.desc()).limit(2)
-    return render_template('home.html', sub=sub, about=about, opentimes=opentimes, contact=contact, phoneno=phoneno, address=address, email=email, posts=posts)
+    return render_template('home.html', sub=sub, about=about, opentimes=opentimes, contact=contact, phoneno=phoneno,
+                           address=address, email=email, posts=posts)
 
 
 @main.route("/edit/<mkdwn>", methods=['GET', 'POST'])

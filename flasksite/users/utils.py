@@ -31,7 +31,8 @@ def send_reset_email(user):
 
 
 def send_request_email(username, forename, surname, email):
-    msg = Message('Access Request', sender=current_app.config['MAIL_USERNAME'], recipients=[current_app.config['MAIL_USERNAME']])
+    msg = Message('Access Request', sender=current_app.config['MAIL_USERNAME'],
+                  recipients=[current_app.config['MAIL_USERNAME']])
     msg.html = render_template('access_email.html', _external=True, username=username, forename=forename,
                                surname=surname, email=email)
     mail.send(msg)
@@ -39,7 +40,8 @@ def send_request_email(username, forename, surname, email):
 
 def send_register_email():
     token = get_register_token()
-    msg = Message('Password Register Link', sender=current_app.config['MAIL_USERNAME'], recipients=[current_app.config['MAIL_USERNAME']])
+    msg = Message('Password Register Link', sender=current_app.config['MAIL_USERNAME'],
+                  recipients=[current_app.config['MAIL_USERNAME']])
     msg.html = render_template('register_email.html', token=token, _external=True)
     mail.send(msg)
 

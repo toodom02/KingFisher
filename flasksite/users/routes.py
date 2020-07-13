@@ -7,7 +7,8 @@ from flasksite import db, bcrypt
 from flasksite.models import User
 from flasksite.users.forms import RegistrationForm, LoginForm, UpdateAccountForm, RequestResetForm, ResetPasswordForm, \
     RequestAccessForm
-from flasksite.users.utils import save_picture, send_reset_email, send_request_email, send_register_email, verify_register_token
+from flasksite.users.utils import save_picture, send_reset_email, send_request_email, send_register_email, \
+    verify_register_token
 
 users = Blueprint('users', __name__)
 

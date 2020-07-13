@@ -9,7 +9,7 @@ class ContentForm(FlaskForm):
 
 
 class OpenTimesForm(FlaskForm):
-    cell_00 = TextAreaField('Monday Guests',validators=[DataRequired()])
+    cell_00 = TextAreaField('Monday Guests', validators=[DataRequired()])
     cell_01 = TextAreaField('Monday Public', validators=[DataRequired()])
     cell_10 = TextAreaField('Tuesday Guests', validators=[DataRequired()])
     cell_11 = TextAreaField('Tuesday Public', validators=[DataRequired()])

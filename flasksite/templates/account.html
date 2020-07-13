@@ -3,17 +3,6 @@
 {% block content %}
 
 <div class="col-md-8">
-<<<<<<< HEAD
-<div class="content-section">
-    <div class="media">
-        <img class="rounded-circle account-img" src={{ image_file }}>
-        <div class="media-body">
-            <h2 class="account-heading">{{ current_user.username }}</h2>
-            <p class="text-secondary">{{ current_user.forename + " " + current_user.surname }}</p>
-            <p class="text-secondary">{{ current_user.email }}</p>
-        </div>
-    </div>
-=======
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
     {% for category, message in messages %}
@@ -32,7 +21,6 @@
                 <p class="text-secondary">{{ current_user.email }}</p>
             </div>
         </div>
->>>>>>> 5df6187... First commit
 
         <form action="" enctype="multipart/form-data" method="POST">
             {{ form.hidden_tag() }}
@@ -114,11 +102,6 @@
             </div>
         </form>
 
-<<<<<<< HEAD
-</div>
-    </div>
-=======
     </div>
 </div>
->>>>>>> 5df6187... First commit
 {% endblock content %}

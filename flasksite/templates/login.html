@@ -3,13 +3,8 @@
 {% block content %}
 <div class="container h-100">
     <div class="row h-100 align-items-center">
-<<<<<<< HEAD
-<div class="col-md-8">
-    {% with messages = get_flashed_messages(with_categories=true) %}
-=======
         <div class="col-md-8">
             {% with messages = get_flashed_messages(with_categories=true) %}
->>>>>>> 5df6187... First commit
             {% if messages %}
             {% for category, message in messages %}
             <div class="alert alert-{{ category }}">
@@ -19,65 +14,7 @@
             {% endif %}
             {% endwith %}
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <form method="POST" action="">
-        <div class="content-section">
-        {{ form.hidden_tag() }}
-        <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Login</legend>
-
-            <div class="form-group">
-                {{ form.username.label(class="form-control-label") }}
-
-                {% if form.username.errors %}
-                {{ form.username(class="form-control form-control-lg is-invalid") }}
-                <div class="invalid-feedback">
-                    {% for error in form.username.errors %}
-                    <span>{{ error }}</span>
-                    {% endfor %}
-                </div>
-                {% else %}
-                {{ form.username(class="form-control form-control-lg") }}
-                {% endif %}
-            </div>
-
-            <div class="form-group">
-                {{ form.password.label(class="form-control-label") }}
-
-                {% if form.password.errors %}
-                {{ form.password(class="form-control form-control-lg is-invalid") }}
-                <div class="invalid-feedback">
-                    {% for error in form.password.errors %}
-                    <span>{{ error }}</span>
-                    {% endfor %}
-                </div>
-                {% else %}
-                {{ form.password(class="form-control form-control-lg") }}
-                {% endif %}
-            </div>
-
-            <div class="form-check">
-                {{ form.remember(class="form-check-input") }}
-                {{ form.remember.label(class="form-check-label") }}
-            </div>
-
-        </fieldset>
-        <div class="form-group">
-            {{ form.submit(class="btn btn-outline-info") }}
-            <small class="text-muted ml-2">
-                <a href="{{ url_for('reset_request') }}">Forgot Password?</a>
-            </small>
-        </div>
-        </div>
-    </form>
-</div>
-    </div>
-=======
-            <form method="POST" action="">
-=======
             <form action="" method="POST">
->>>>>>> cbb1c72... Support for multiple media uploads
                 <div class="content-section">
                     {{ form.hidden_tag() }}
                     <fieldset class="form-group">
@@ -136,7 +73,6 @@
         </small>
     </div>
 
->>>>>>> 5df6187... First commit
 </div>
 
 {% endblock content %}
